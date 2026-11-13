@@ -1,6 +1,7 @@
 # Generated / installed
 node_modules/
 dist/
+dist-demo/
 *.tsbuildinfo
 .eslintcache
 # Copied from react-pdf's pdfjs-dist by predev/prebuild; never commit a stale worker

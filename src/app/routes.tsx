@@ -12,6 +12,8 @@ import { ReportEditPage } from '@/pages/report-edit.page';
 import { ReportDetailPage } from '@/pages/report-detail.page';
 import { ApprovalsPage } from '@/pages/approvals.page';
 import { ExpenseSessionProvider, useExpenseSession } from '@/expense/session';
+// ログイン不要のデモ版（npm run build:demo）でのみ読み込む
+const DemoBanner = import.meta.env.VITE_DEMO ? lazy(() => import('@/demo/demo-banner')) : null;
 
 function ShellWithNav() {
   // ヘッダのユーザーチップとログアウトはログイン中ユーザーから描画する（SDK 側にプレースホルダ名は無い）
@@ -24,7 +26,8 @@ function ShellWithNav() {
     ...(session.isApprover ? [{ label: '承認・精算', to: '/approvals', icon: <ClipboardCheck size={18} /> }] : []),
   ];
   return (
-    <AdminShell title="経費精算" user={user} onLogout={logout} navItems={navItems}>
+    <AdminShell title={DemoBanner ? '経費精算（デモ）' : '経費精算'} user={user} onLogout={DemoBanner ? undefined : logout} navItems={navItems}>
+      {DemoBanner && <Suspense fallback={null}><DemoBanner /></Suspense>}
       <Outlet />
     </AdminShell>
   );

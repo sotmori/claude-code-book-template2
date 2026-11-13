@@ -26,4 +26,10 @@ export default defineConfig([
     files: ['src/auth/app-session.ts', 'src/auth/app-runtime.ts', 'src/auth/scoped-storage.ts', 'src/auth/dev-auth*.ts*'],
     rules: { 'no-restricted-globals': 'off', 'no-restricted-properties': 'off' },
   },
+  {
+    // Login-free demo build only (npm run build:demo): a shared, app-path-scoped demo
+    // dataset that every simulated demo user reads. Never loaded by the production build.
+    files: ['src/demo/demo-backend.ts'],
+    rules: { 'no-restricted-globals': 'off' },
+  },
 ]);

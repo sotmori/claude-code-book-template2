@@ -18,7 +18,9 @@
     "lint:fix": "eslint src --fix",
     "test": "node --test tests/*.test.cjs",
     "postbuild": "node tests/check-production.cjs",
-    "package": "npm run build && node -e \"require('fs').mkdirSync('deploy',{recursive:true})\" && cd dist && rm -f ../deploy/expense-settlement-app.zip && zip -qr -X ../deploy/expense-settlement-app.zip ."
+    "package": "npm run build && node -e \"require('fs').mkdirSync('deploy',{recursive:true})\" && cd dist && rm -f ../deploy/expense-settlement-app.zip && zip -qr -X ../deploy/expense-settlement-app.zip .",
+    "build:demo": "npm run copy:pdf-worker && vite build --mode demo --outDir dist-demo",
+    "package:demo": "npm run build:demo && node -e \"require('fs').mkdirSync('deploy',{recursive:true})\" && cd dist-demo && rm -f ../deploy/expense-settlement-demo.zip && zip -qr -X ../deploy/expense-settlement-demo.zip ."
   },
   "dependencies": {
     "@valance/sdk": "file:./vendor/valance-sdk",

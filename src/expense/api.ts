@@ -121,6 +121,11 @@ interface UploadResponse {
 
 /** 領収書をアップロードする: presigned POST を取得 → S3 へ直接送信（Authorization は付けない） */
 export async function uploadReceipt(key: string, file: File): Promise<void> {
+  if (import.meta.env.VITE_DEMO) {
+    const { demoSaveFile } = await import('@/demo/demo-backend');
+    await demoSaveFile(key, file);
+    return;
+  }
   const contentType = file.type || 'application/octet-stream';
   const { data } = await api.post<UploadResponse>(filePath(key), { size: file.size, contentType });
   const form = new FormData();

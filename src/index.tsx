@@ -10,7 +10,13 @@ async function start() {
   const root = document.getElementById('root');
   if (!root) throw new Error('Missing application root');
   try {
-    await bootstrapAppSession();
+    if (import.meta.env.VITE_DEMO) {
+      // デモ版: ログインせず、ブラウザ内のデモ用バックエンドで動かす
+      const { startDemo } = await import('./demo/demo-backend');
+      startDemo();
+    } else {
+      await bootstrapAppSession();
+    }
   } catch {
     const message = document.createElement('p');
     message.textContent = 'ログインの有効期限が切れました。もう一度ログインしてください。';

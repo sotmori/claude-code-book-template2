@@ -7,7 +7,7 @@ import type { Plugin } from 'vite'
 // Bundle-root files (vcaguide.md → "Bundle-root files"): config.json sets the app name
 // and database.json declares the virtual tables. Both live at the project root and are
 // emitted at the root of dist/ so the deploy ZIP carries them.
-function bundleRootFiles(names: string[]): Plugin {
+function bundleRootFiles(names: string[], demo: boolean): Plugin {
   return {
     name: 'valance-bundle-root-files',
     apply: 'build',
@@ -15,8 +15,11 @@ function bundleRootFiles(names: string[]): Plugin {
       for (const name of names) {
         const source = path.resolve(import.meta.dirname, name)
         if (!fs.existsSync(source)) continue
-        JSON.parse(fs.readFileSync(source, 'utf8'))
-        this.emitFile({ type: 'asset', fileName: name, source: fs.readFileSync(source, 'utf8') })
+        const json = JSON.parse(fs.readFileSync(source, 'utf8'))
+        // The login-free demo keeps its data in the browser: no tables, separate app name.
+        if (demo && name === 'database.json') continue
+        if (demo && name === 'config.json') json.name = `${json.name}（デモ）`
+        this.emitFile({ type: 'asset', fileName: name, source: `${JSON.stringify(json, null, 2)}\n` })
       }
     },
   }
@@ -42,7 +45,11 @@ export default defineConfig(({ mode }) => {
         '@': path.resolve(import.meta.dirname, './src'),
       },
     },
-    plugins: [react(), bundleRootFiles(['config.json', 'database.json'])],
+    plugins: [react(), bundleRootFiles(['config.json', 'database.json'], mode === 'demo')],
+    define: {
+      // 'demo' mode (npm run build:demo) builds the login-free demo; every other build leaves it empty.
+      'import.meta.env.VITE_DEMO': JSON.stringify(mode === 'demo' ? '1' : ''),
+    },
     build: {
       // Vite 8 drops licence banners when it minifies. Keep them: the MIT / ISC /
       // Apache notices must ship with the bundled code, and the platform's
