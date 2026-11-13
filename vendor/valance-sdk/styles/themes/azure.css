@@ -1,0 +1,23 @@
+/*
+ * Client Theme ── azure（アジュール・コーポレート青）
+ *
+ * ホワイトレーベル層: ブランド連動トークンのみを上書きする。
+ * セマンティック色（danger/success/warning/info）と無彩色は theme.css の既定値を使う。
+ *
+ * Format: R G B (space-separated, no commas)
+ */
+
+:root[data-theme='azure'] {
+  /* ── DT-01 色 / Brand ───────────────────────────────── */
+  --color-primary: 29 78 216;            /* #1D4ED8 */
+  --color-primary-hover: 30 64 175;      /* #1E40AF */
+  --color-primary-lightest: 239 244 254; /* #EFF4FE */
+  --color-primary-light: 199 215 251;    /* #C7D7FB */
+  --color-primary-dark: 30 58 138;       /* #1E3A8A */
+
+  /* ── DT-01 色 / Borders ─────────────────────────────── */
+  --color-border-focus: 29 78 216;       /* #1D4ED8 */
+
+  /* ── DT-01 色 / チャート系列1＝ブランド色 ───────────── */
+  --color-chart-1: 29 78 216;            /* #1D4ED8 */
+}

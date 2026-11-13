@@ -1,0 +1,24 @@
+/*
+ * Client Theme ── sumi（墨・モノクロ）
+ *
+ * ホワイトレーベル層: ブランド連動トークンのみを上書きする。
+ * 低彩度ブランドでも同じトークン差し替えだけで成立することを示す保守的テーマ。
+ * セマンティック色（danger/success/warning/info）と無彩色は theme.css の既定値を使う。
+ *
+ * Format: R G B (space-separated, no commas)
+ */
+
+:root[data-theme='sumi'] {
+  /* ── DT-01 色 / Brand ───────────────────────────────── */
+  --color-primary: 31 41 55;             /* #1F2937 */
+  --color-primary-hover: 17 24 39;       /* #111827 */
+  --color-primary-lightest: 243 244 246; /* #F3F4F6 */
+  --color-primary-light: 213 218 225;    /* #D5DAE1 */
+  --color-primary-dark: 11 18 32;        /* #0B1220 */
+
+  /* ── DT-01 色 / Borders ─────────────────────────────── */
+  --color-border-focus: 31 41 55;        /* #1F2937 */
+
+  /* ── DT-01 色 / チャート系列1＝ブランド色 ───────────── */
+  --color-chart-1: 31 41 55;             /* #1F2937 */
+}

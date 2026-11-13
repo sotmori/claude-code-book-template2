@@ -1,0 +1,103 @@
+/*
+ * Theme Configuration ── VCA Design Tokens (DT-01..07)
+ *
+ * All visual decisions in every VCA application resolve to the variables in
+ * this file. Customer branding is applied by swapping values here only
+ * (white-label = this file, nothing else).
+ *
+ * Format: R G B (space-separated, no commas)
+ */
+
+:root {
+  /* ── DT-01 色 / Brand ───────────────────────────────── */
+  /* 2026-07 デザインレビュー反映: 緑を1段深く（白文字ボタンのコントラスト改善） */
+  --color-primary: 0 168 118;           /* #00A876 */
+  --color-primary-hover: 0 140 98;      /* #008C62 */
+  --color-primary-lightest: 230 249 244; /* #E6F9F4 */
+  --color-primary-light: 179 240 222;   /* #B3F0DE */
+  --color-primary-dark: 0 112 79;       /* #00704F */
+
+  /* ── DT-01 色 / Surfaces（クールスレート寄り）───────── */
+  --color-surface: 255 255 255;         /* #FFFFFF */
+  --color-surface-secondary: 248 250 252; /* #F8FAFC */
+  --color-surface-tertiary: 241 245 249;  /* #F1F5F9 */
+  --color-surface-active: 237 242 247;    /* #EDF2F7 */
+
+  /* ── DT-01 色 / Foreground（クールスレート階調）─────── */
+  --color-foreground: 15 23 42;         /* #0F172A */
+  --color-foreground-secondary: 51 65 85; /* #334155 */
+  --color-foreground-tertiary: 100 116 139; /* #64748B */
+  --color-foreground-disabled: 148 163 184; /* #94A3B8 */
+
+  /* ── DT-01 色 / Borders（ヘアライン化）──────────────── */
+  --color-border-strong: 226 231 240;   /* #E2E7F0 */
+  --color-border-focus: 0 168 118;      /* #00A876 */
+
+  /* ── DT-01 色 / Semantic: danger ────────────────────── */
+  --color-danger: 220 38 38;            /* #DC2626 */
+  --color-danger-hover: 185 28 28;      /* #B91C1C */
+  --color-danger-bg: 254 242 242;       /* #FEF2F2 */
+  --color-danger-border: 254 202 202;   /* #FECACA */
+
+  /* ── DT-01 色 / Semantic: success・warning・info ────── */
+  --color-success: 22 163 74;           /* #16A34A */
+  --color-success-bg: 240 253 244;      /* #F0FDF4 */
+  --color-success-border: 187 247 208;  /* #BBF7D0 */
+  --color-warning: 217 119 6;           /* #D97706 */
+  --color-warning-bg: 255 251 235;      /* #FFFBEB */
+  --color-warning-border: 253 230 138;  /* #FDE68A */
+  --color-info: 2 132 199;              /* #0284C7 */
+  --color-info-bg: 240 249 255;         /* #F0F9FF */
+  --color-info-border: 186 230 253;     /* #BAE6FD */
+
+  /* ── DT-01 色 / チャート配色（カテゴリカル8色）─────── */
+  /* Chart colors are fixed. Series N always uses chart-N in order.        */
+  --color-chart-1: 0 168 118;    /* brand green  #00A876 */
+  --color-chart-2: 37 99 235;    /* blue         #2563EB */
+  --color-chart-3: 245 158 11;   /* amber        #F59E0B */
+  --color-chart-4: 139 92 246;   /* violet       #8B5CF6 */
+  --color-chart-5: 236 72 153;   /* pink         #EC4899 */
+  --color-chart-6: 20 184 166;   /* teal         #14B8A6 */
+  --color-chart-7: 249 115 22;   /* orange       #F97316 */
+  --color-chart-8: 100 116 139;  /* slate        #64748B */
+
+  /* ── DT-04 角丸・罫線（3段階）───────────────────────── */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* ── DT-05 影・レイヤー（elevation 3段階・スレート色の柔らかい多層影）── */
+  --shadow-1: 0 1px 2px 0 rgb(15 23 42 / 0.04), 0 1px 1px -1px rgb(15 23 42 / 0.03);
+  --shadow-2: 0 2px 4px -1px rgb(15 23 42 / 0.05), 0 6px 12px -4px rgb(15 23 42 / 0.06);
+  --shadow-3: 0 8px 16px -6px rgb(15 23 42 / 0.08), 0 20px 32px -12px rgb(15 23 42 / 0.10);
+  /* ボタン・入力欄の微小エレベーション */
+  --shadow-btn-solid: inset 0 1px 0 0 rgb(255 255 255 / 0.12), 0 1px 2px 0 rgb(15 23 42 / 0.08);
+  --shadow-btn-outline: 0 1px 2px 0 rgb(15 23 42 / 0.04);
+
+  /* ── DT-05 z-index台帳（重なり順はここでのみ定義）──── */
+  --z-dropdown: 1000;
+  --z-drawer: 1100;
+  --z-modal: 1200;
+  --z-toast: 1300;
+
+  /* ── DT-07 モーション（duration 2値・easing 2種）───── */
+  --duration-fast: 150ms;
+  --duration-slow: 300ms;
+  --easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
+
+  /* ── DT-03 間隔・寸法 ───────────────────────────────── */
+  --content-max-width: 1280px;
+  /* テーブル密度 3 段階。行高と本文の font-size / line-height を対にする。
+     comfortable は入力高と同じ 38px（EditableGrid の行 = 入力欄 1 本の高さ） */
+  --row-height-standard: 44px;
+  --row-height-comfortable: 38px;
+  --row-height-dense: 32px;
+  --table-font-size-standard: 14px;
+  --table-line-height-standard: 20px;
+  --table-font-size-comfortable: 13px;
+  --table-line-height-comfortable: 18px;
+  --table-font-size-dense: 12px;
+  --table-line-height-dense: 16px;
+  --input-height: 38px;
+}

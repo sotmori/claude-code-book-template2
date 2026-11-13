@@ -1,0 +1,11 @@
+# Generated / installed
+node_modules/
+dist/
+*.tsbuildinfo
+.eslintcache
+# Copied from react-pdf's pdfjs-dist by predev/prebuild; never commit a stale worker
+public/pdf.worker.min.mjs
+# Local settings: VITE_API_TARGET / VITE_APP_ID are for `npm run dev` only
+.env
+.env.*
+!.env.development.example

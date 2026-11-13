@@ -1,0 +1,7 @@
+/*
+ * アプリ側テーマ層（ホワイトレーベル・カスタマイズポイント）
+ * 既定トークンは @valance/sdk の tokens.css が供給する。
+ * 顧客ごとのブランド適用は、この下の :root でトークン値を上書きするだけで行う
+ * （例: --color-primary の差し替え）。コンポーネント側の変更は不要。
+ */
+@import '@valance/sdk/styles/tokens.css';

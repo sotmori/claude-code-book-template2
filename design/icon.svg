@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="235" height="235" viewBox="0 0 235 235">
+  <rect x="0" y="0" width="235" height="235" rx="44" fill="#0f766e"/>
+  <!-- receipt -->
+  <path d="M62 40 h96 a8 8 0 0 1 8 8 v138 l-14 -10 l-14 10 l-14 -10 l-14 10 l-14 -10 l-14 10 l-14 -10 l-14 10 v-138 a8 8 0 0 1 8 -8 z" fill="#ffffff"/>
+  <rect x="78" y="62" width="64" height="9" rx="4.5" fill="#99f6e4"/>
+  <rect x="78" y="80" width="44" height="9" rx="4.5" fill="#99f6e4"/>
+  <!-- yen sign -->
+  <g stroke="#0f766e" stroke-width="11" stroke-linecap="round" fill="none">
+    <path d="M90 104 L110 132 L130 104"/>
+    <path d="M110 132 V160"/>
+    <path d="M94 136 H126"/>
+    <path d="M94 150 H126"/>
+  </g>
+  <!-- check badge -->
+  <circle cx="172" cy="170" r="34" fill="#f59e0b" stroke="#0f766e" stroke-width="6"/>
+  <path d="M156 170 l11 11 l21 -22" stroke="#ffffff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

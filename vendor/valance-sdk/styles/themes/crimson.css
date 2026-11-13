@@ -1,0 +1,23 @@
+/*
+ * Client Theme ── crimson（クリムゾン・コーポレート赤）
+ *
+ * ホワイトレーベル層: ブランド連動トークンのみを上書きする。
+ * セマンティック色（danger/success/warning/info）と無彩色は theme.css の既定値を使う。
+ *
+ * Format: R G B (space-separated, no commas)
+ */
+
+:root[data-theme='crimson'] {
+  /* ── DT-01 色 / Brand ───────────────────────────────── */
+  --color-primary: 200 16 46;            /* #C8102E */
+  --color-primary-hover: 165 13 38;      /* #A50D26 */
+  --color-primary-lightest: 251 234 236; /* #FBEAEC */
+  --color-primary-light: 242 196 204;    /* #F2C4CC */
+  --color-primary-dark: 142 11 32;       /* #8E0B20 */
+
+  /* ── DT-01 色 / Borders ─────────────────────────────── */
+  --color-border-focus: 200 16 46;       /* #C8102E */
+
+  /* ── DT-01 色 / チャート系列1＝ブランド色 ───────────── */
+  --color-chart-1: 200 16 46;            /* #C8102E */
+}

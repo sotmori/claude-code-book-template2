@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "tables": [
+    {
+      "tableName": "expense_reports",
+      "displayName": "経費精算申請",
+      "description": "経費精算の申請書。1レコード＝1申請で、明細行（items）と承認履歴（history）を内包する。申請者は自分の申請のみ参照・更新でき、承認者（経理）グループには管理者グループ上書き（canReadAll / canUpdateAll）を付与して全件を扱う。",
+      "shared": false,
+      "schema": {
+        "columns": [
+          { "name": "reportNo", "type": "string", "required": true, "description": "申請番号。EXP-YYYYMMDD-XXXX 形式。画面表示と検索に使う" },
+          { "name": "title", "type": "string", "required": true, "description": "申請件名（例: 6月 出張旅費）" },
+          { "name": "status", "type": "string", "required": true, "description": "申請状態。draft=下書き, submitted=承認待ち, approved=承認済（支払待ち）, rejected=差戻し, paid=精算済" },
+          { "name": "applicantName", "type": "string", "description": "申請者の表示名（申請時点の記録。権限判定には使わない）" },
+          { "name": "applicantEmail", "type": "string", "description": "申請者のメールアドレス（表示用）" },
+          { "name": "department", "type": "string", "description": "申請者の所属部署（任意入力）" },
+          { "name": "periodMonth", "type": "string", "description": "対象月。YYYY-MM 形式" },
+          { "name": "totalAmount", "type": "number", "description": "明細金額の合計（円・税込）" },
+          { "name": "itemCount", "type": "number", "description": "明細行の件数" },
+          { "name": "items", "type": "array", "description": "明細行の配列。各要素は {id, date(YYYY-MM-DD), category, payee, description, amount(円・税込), receiptKey?, receiptName?}。receiptKey はファイルストアのキー" },
+          { "name": "note", "type": "string", "description": "申請者の備考" },
+          { "name": "submittedAt", "type": "string", "description": "最終申請日時（ISO-8601）" },
+          { "name": "approvedAt", "type": "string", "description": "承認日時（ISO-8601）" },
+          { "name": "approverName", "type": "string", "description": "承認者の表示名（承認時点の記録）" },
+          { "name": "paidAt", "type": "string", "description": "精算（支払）日。YYYY-MM-DD 形式" },
+          { "name": "history", "type": "array", "description": "操作履歴の配列。各要素は {at(ISO-8601), action(created|submitted|withdrawn|approved|rejected|paid), actorName, actorPrincipalId, comment?}" }
+        ]
+      },
+      "acl": {
+        "readMode": "owner",
+        "insertMode": "open",
+        "updateMode": "owner",
+        "deleteMode": "owner"
+      }
+    }
+  ],
+  "storage": {
+    "files": { "readMode": "owner", "writeMode": "owner", "deleteMode": "owner" }
+  }
+}

@@ -1,0 +1,47 @@
+/*
+ * SHL-03: 印刷スタイル
+ * A4用紙の寸法・改ページ・印刷時の表示制御はここでのみ定義する。
+ * 画面プレビューと印刷出力の両方で同じ .print-sheet を使う。
+ */
+
+/* 画面プレビュー: A4実寸（210mm × 297mm、余白15mm）の用紙 */
+.print-sheet {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 15mm;
+  /* 帳票内の背景色・罫線色を印刷でも維持する */
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* 改ページ: この要素の直後で改ページする */
+.page-break {
+  break-after: page;
+  page-break-after: always;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  /* 印刷対象外（操作UI・シェル装飾など）は .no-print を付与して隠す */
+  .no-print {
+    display: none !important;
+  }
+
+  /* プレビュー用の余白・背景・スクロールを印刷では解除する */
+  .print-preview {
+    padding: 0 !important;
+    background: none !important;
+    overflow: visible !important;
+  }
+
+  /* 用紙そのものが出力面になるため、影と余分な高さを除去する */
+  .print-sheet {
+    min-height: auto;
+    margin: 0 !important;
+    box-shadow: none !important;
+  }
+}
